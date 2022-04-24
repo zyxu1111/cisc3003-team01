@@ -131,3 +131,8 @@ table tr td{
     margin: 10% auto;
     padding: 2%;
 }
+
+/* my css */
+.msg{
+    font-size: 14px;
+}
