@@ -1,21 +1,11 @@
-<?php
-    session_start();
-    // define('SITEURL', 'http://localhost/cisc3003/cisc3003-team01/food-order-website-php-example/');
-    define('LOCALHOST', 'localhost');
-    define('DB_USERNAME', 'root');
-    define('DB_PASSWORD', '');
-    define('DB_NAME', 'food_order');
-
-    $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error()); //Database Connection
-    $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error()); //SElecting Database
-?>
+<?php include('../config/constants.php'); ?>
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Food Order System</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/my-login.css">
 </head>
 <body>
 
@@ -57,8 +47,8 @@
 
         // Process for Login
         //1. Get the Data from Login form
-        $username = $_POST['username'];
-        $password = md5($_POST['password']); 
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = mysqli_real_escape_string($conn, md5($_POST['password'])); 
 
         echo "<script>console.log('$username'+'$password');</script>"; // delete
 
@@ -71,11 +61,11 @@
         {
             $_SESSION['login'] = "<div class='msg success'>Login successful!.</div>";
             $_SESSION['user'] = $username;
-            header('location:../admin/my-login.php'); // location
+            header('location:'.SITEURL.'admin/'); // redirect to ...
         }
         else{
             $_SESSION['login'] = "<div class='msg error'>Username or Password did not match.</div>";
-            header('location:../admin/my-login.php');   // location 
+            header('location:'.SITEURL.'admin/my-login.php');
         }
     }   
 ?>
