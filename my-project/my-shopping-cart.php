@@ -54,9 +54,6 @@
         ?>
         <br><br>
 
-        <!-- Button to Add Admin -->
-        <a href="<?php echo SITEURL; ?>admin/my-add-category.php" class="btn-primary">Add Category</a>
-
         <br /><br /><br />
 
     <table class="tbl-full">
@@ -80,7 +77,7 @@
 
                 if($count_u){
                     //Query to Get all CAtegories from Database
-                    $sql = "SELECT tbl_cart.qty, tbl_goods.title, tbl_goods.description, tbl_goods.price, tbl_goods.image_name 
+                    $sql = "SELECT tbl_cart.id, tbl_cart.qty, tbl_goods.title, tbl_goods.description, tbl_goods.price, tbl_goods.image_name
                     FROM (tbl_cart JOIN tbl_goods ON tbl_cart.goods_id=tbl_goods.id) 
                     WHERE tbl_cart.user_id=$user_id";
                     $res = mysqli_query($conn, $sql);
@@ -95,6 +92,7 @@
                         while($row=mysqli_fetch_assoc($res))
                         {   
                             //$user_id is already defined
+                            $cart_id = $row['id'];
                             $qty = $row['qty'];
                             $title = $row['title'];
                             $description = $row['description'];
@@ -117,7 +115,7 @@
                                         //Display the Image
                                         ?>
                                         
-                                        <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" width="100px" >
+                                        <img src="<?php echo SITEURL; ?>images/goods/<?php echo $image_name; ?>" width="100px" >
                                         
                                         <?php
                                     }
@@ -131,11 +129,15 @@
                             </td>
 
                             <td><?php echo $price; ?></td>
-                            <td><?php echo $qty; ?></td>
+                            <td><span class="cart">
+                                <button class="minus iconfont icon-subtract" onclick="location.href='<?php echo SITEURL; ?>my-update-cart.php?op=sub&cart_id=<?php echo $cart_id; ?>'">-</button>
+                                <input type="number" min="1" step="1" value=<?php echo $qty; ?>>
+                                <button class="plus iconfont icon-jiahao" onclick="location.href='<?php echo SITEURL; ?>my-update-cart.php?op=add&cart_id=<?php echo $cart_id; ?>'">+</button>
+                                </span>
+                            </td>
                             <td><?php echo $total; ?></td>
                             <td>
-                                <a href="<?php echo SITEURL; ?>admin/my-update-category.php?id=<?php echo $id; ?>" class="btn-secondary">Update Item</a>
-                                <a href="<?php echo SITEURL; ?>admin/my-delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-danger">Delete Item</a>
+                                <a href="<?php echo SITEURL; ?>my-delete-cart.php?cart_id=<?php echo $cart_id; ?>" class="btn-danger">Delete Item</a>
                             </td>
                         </tr>
 
