@@ -13,5 +13,7 @@
     $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error()); //Database Connection
     $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error()); //SElecting Database
 
+    // for test
+    $_SESSION['user_id']=2;
 
 ?>
