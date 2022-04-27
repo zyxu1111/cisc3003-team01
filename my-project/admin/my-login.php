@@ -50,8 +50,6 @@
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, md5($_POST['password'])); 
 
-        echo "<script>console.log('$username'+'$password');</script>"; // delete
-
         //2. SQL
         $sql_login = "SELECT * FROM tbl_admin WHERE username='$username' AND password='$password'";
 
