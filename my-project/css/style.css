@@ -209,6 +209,41 @@ fieldset{
     font-weight: bold;
 }
 
+/* CSS for shopping cart */
+.mt25{
+    margin-top: 25px;
+}
+.ml18{
+    margin-left: 18px;
+}
+.ml68{
+    margin-left: 68px;
+}
+.cart > span{
+    /* color:#898989; */
+    /* font-family: "宋体"; */
+    padding: 8px 24px 0 0;
+}
+.cart>button,
+.cart>input{
+    display: inline-block;
+    width: 30px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    /* color:#bbbbbb; */
+    border: 1px solid #cecece;
+}
+.cart>input{
+    width:45px;
+    box-sizing: content-box;
+    vertical-align: top;
+    margin-left: -4px;
+    border-left-style: none;
+}
+.cart .plus{
+    margin-left: -4px;
+}
 
 
 /* CSS for Mobile Size or Smaller Screen */
@@ -266,3 +301,5 @@ fieldset{
         width: 100%;
     }
 }
+
+

@@ -1,4 +1,5 @@
 <?php include('config/constants.php'); ?>
+<?php include('partials-front/my-login-check.php'); ?>
 
 <?php
 if( isset($_GET['cart_id'], $_GET['op'], $_SESSION['user_id']) ){

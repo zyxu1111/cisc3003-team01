@@ -1,5 +1,6 @@
 
 <?php include('partials-front/menu.php'); ?>
+<?php include('partials-front/my-login-check.php'); ?>
 
 <div class="main-content">
     <div class="wrapper">

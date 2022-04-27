@@ -1,5 +1,6 @@
 
 <?php include('partials-front/menu.php'); ?>
+<?php include('partials-front/my-login-check.php'); ?>
 
 <?php 
     //CHeck whether food id is set or not
