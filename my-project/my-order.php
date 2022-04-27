@@ -4,47 +4,51 @@
 
 <?php 
     //CHeck whether food id is set or not
-    if(isset($_GET['user_id'], $_GET['goods_id']))
+    if(!isset($_SESSION['user_id']))
     {
-        //Get the Food id and details of the selected food
-        $user_id = $_GET['user_id'];
-        $goods_id = $_GET['goods_id'];
-
-        //Get the DEtails of the SElected Food
-        $sql = "SELECT * FROM tbl_goods WHERE id=$goods_id";
-        //Execute the Query
-        $res = mysqli_query($conn, $sql);
-        //Count the rows
-        $count = mysqli_num_rows($res);
-
-        $sql_u = "SELECT * FROM tbl_users WHERE id=$user_id";
-        //Execute the Query
-        $res_u = mysqli_query($conn, $sql_u);
-        //Count the rows
-        $count_u = mysqli_num_rows($res);
-
-        //CHeck whether the data is available or not
-        if($count and $count_u)
-        {
-            //GEt the Data from Database
-            $row = mysqli_fetch_assoc($res);
-
-            $title = $row['title'];
-            $price = $row['price'];
-            $image_name = $row['image_name'];
-        }
-        else
-        {
-            //Food not Availabe or user does not exist
-            //REdirect to Home Page
-            header('location:'.SITEURL);
-            
-        }
+        header('location:'.SITEURL.'my-login.php');
     }
-    else
+    elseif(!isset($_GET['goods_id']))
     {
         //Redirect to homepage
         header('location:'.SITEURL);
+    }
+    else
+    {
+            //Get the Food id and details of the selected food
+            $user_id = $_SESSION['user_id'];
+            $goods_id = $_GET['goods_id'];
+
+            //Get the DEtails of the SElected Food
+            $sql = "SELECT * FROM tbl_goods WHERE id=$goods_id";
+            //Execute the Query
+            $res = mysqli_query($conn, $sql);
+            //Count the rows
+            $count = mysqli_num_rows($res);
+
+            $sql_u = "SELECT * FROM tbl_users WHERE id=$user_id";
+            //Execute the Query
+            $res_u = mysqli_query($conn, $sql_u);
+            //Count the rows
+            $count_u = mysqli_num_rows($res);
+
+            //CHeck whether the data is available or not
+            if($count and $count_u)
+            {
+                //GEt the Data from Database
+                $row = mysqli_fetch_assoc($res);
+
+                $title = $row['title'];
+                $price = $row['price'];
+                $image_name = $row['image_name'];
+            }
+            else
+            {
+                //Food not Availabe or user does not exist
+                //REdirect to Home Page
+                header('location:'.SITEURL);
+                
+            }
     }
 ?>
 
@@ -87,7 +91,7 @@
                     <input type="hidden" name="price" value="<?php echo $price; ?>">
 
                     <div class="order-label">Quantity</div>
-                    <input type="number" name="qty" class="input-responsive" value="1" required>
+                    <input type="number" name="qty" class="input-responsive" value="<?php echo (isset($_GET['qty'])? $_GET['qty']: 1); ?>" required>
                     
                 </div>
 

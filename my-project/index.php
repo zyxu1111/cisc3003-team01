@@ -130,7 +130,7 @@
                             {
                                 //Image Available
                                 ?>
-                                <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                                <img src="<?php echo SITEURL; ?>images/goods/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
                                 <?php
                             }
                         ?>
@@ -145,7 +145,7 @@
                         </p>
                         <br>
 
-                        <a href="<?php echo SITEURL; ?>my-order.php?goods_id=<?php echo $id; ?>&user_id=<?php echo 2; ?>" class="btn btn-primary">Order Now</a>
+                        <a href="<?php echo SITEURL; ?>my-order.php?goods_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
                     </div>
                 </div>
 

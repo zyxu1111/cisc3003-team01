@@ -36,6 +36,7 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li><a href="my-logout.php">Logout</a></li>
                 </ul>
             </div>
 

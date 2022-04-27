@@ -78,7 +78,7 @@
 
                 if($count_u){
                     //Query to Get all CAtegories from Database
-                    $sql = "SELECT tbl_cart.id, tbl_cart.qty, tbl_goods.title, tbl_goods.description, tbl_goods.price, tbl_goods.image_name
+                    $sql = "SELECT tbl_cart.id, tbl_cart.qty, tbl_goods.title, tbl_goods.description, tbl_goods.price, tbl_goods.image_name, tbl_cart.goods_id
                     FROM (tbl_cart JOIN tbl_goods ON tbl_cart.goods_id=tbl_goods.id) 
                     WHERE tbl_cart.user_id=$user_id";
                     $res = mysqli_query($conn, $sql);
@@ -100,6 +100,7 @@
                             $price = $row['price'];
                             $image_name = $row['image_name'];
                             $total = $qty * $price;
+                            $goods_id = $row['goods_id'];
 
         ?>
 
@@ -139,6 +140,9 @@
                             <td><?php echo $total; ?></td>
                             <td>
                                 <a href="<?php echo SITEURL; ?>my-delete-cart.php?cart_id=<?php echo $cart_id; ?>" class="btn-danger">Delete Item</a>
+                            </td>
+                            <td>    
+                                <a href="<?php echo SITEURL; ?>my-order.php?goods_id=<?php echo $goods_id; ?>&qty=<?php echo $qty; ?>" class="btn">  Order</a>
                             </td>
                         </tr>
 
