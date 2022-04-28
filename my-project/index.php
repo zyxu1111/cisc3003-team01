@@ -172,6 +172,7 @@
 
     <p class="text-center">
         <a href="#">See All Foods</a>
+        <?php echo md5("user"); ?>
     </p>
 </section>
 <!-- fOOD Menu Section Ends Here -->

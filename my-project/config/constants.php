@@ -5,7 +5,7 @@
     define('LOCALHOST', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');
-    define('DB_NAME', 'e-shopping');
+    define('DB_NAME', 'team-project');
     
     //Start Session
     session_start();
