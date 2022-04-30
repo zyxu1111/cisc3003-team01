@@ -1,5 +1,8 @@
 
-<?php include('partials/menu.php'); ?>
+<?php 
+include('partials/menu.php'); 
+echo $_SESSION['admin_id'];
+?>
 
 <!-- Main Content Section Starts -->
 <div class="main-content">
