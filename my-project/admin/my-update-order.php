@@ -17,10 +17,10 @@
                 //Get all other details based on this id
                 //SQL Query to get the order details
                 $sql = "SELECT `tbl_order`.id order_id, `tbl_users`.username,`tbl_goods`.title ,`tbl_goods`.price, `tbl_order`.qty, order_date, 
-                status, customer_name, customer_contact, customer_email, customer_address
-                FROM (`tbl_users` INNER JOIN `tbl_order` ON `tbl_users`.id=`tbl_order`.user_id) INNER JOIN 
-                `tbl_goods` ON `tbl_order`.goods_id=`tbl_goods`.id
-                WHERE `tbl_order`.id = $order_id";
+                status, customer_name, customer_contact, customer_email, customer_address, user_id, goods_id
+                    FROM (`tbl_users` INNER JOIN `tbl_order` ON `tbl_users`.id=`tbl_order`.user_id) INNER JOIN 
+                    `tbl_goods` ON `tbl_order`.goods_id=`tbl_goods`.id
+                    WHERE `tbl_order`.id = $order_id";
                 //Execute Query
                 $res = mysqli_query($conn, $sql);
                 //Count Rows
@@ -30,10 +30,13 @@
                 {
                     //Detail Availble
                     $row=mysqli_fetch_assoc($res);
+                    $user_id = $row['user_id'];
+                    $goods_id = $row['goods_id'];
                     $username = $row['username'];
                     $item_title = $row['title'];
                     $price = $row['price'];
                     $qty = $row['qty'];
+                    $order_date = $row['order_date'];
                     $status = $row['status'];
                     $customer_name = $row['customer_name'];
                     $customer_contact = $row['customer_contact'];
@@ -60,32 +63,40 @@
         <form action="" method="POST">
         
             <table class="tbl-30">
-                <tr>
-                    <td>Order No</td>
-                    <td><b> <?php echo $order_id; ?> </b></td>
-                </tr>
-                <tr>
-                    <td>Username</td>
-                    <td><b> <?php echo $username; ?> </b></td>
-                </tr>
-                <tr>
-                    <td>Item Title</td>
-                    <td><b> <?php echo $item_title; ?> </b></td>
-                </tr>
+            <tr>
+                <td>Order No.</td>
+                <td><b> <?php echo $order_id; ?> </b></td>
+            </tr>
+            <tr>
+                <td>User ID</td>
+                <td><b> <?php echo $user_id; ?> </b></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td><b> <?php echo $username; ?> </b></td>
+            </tr>
+            <tr>
+                <td>Item ID</td>
+                <td><b> <?php echo $goods_id; ?> </b></td>
+            </tr>
+            <tr>
+                <td>Item Title</td>
+                <td><b> <?php echo $item_title; ?> </b></td>
+            </tr>
 
-                <tr>
-                    <td>Price</td>
-                    <td>
-                        <b> $ <?php echo $price; ?></b>
-                    </td>
-                </tr>
+            <tr>
+                <td>Price</td>
+                <td>
+                    <b> $ <?php echo $price; ?></b>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>Qty</td>
-                    <td>
-                        <input type="number" name="qty" value="<?php echo $qty; ?>">
-                    </td>
-                </tr>
+            <tr>
+                <td>Quantity</td>
+                <td>
+                    <b><?php echo $qty; ?></b>
+                </td>
+            </tr>
 
                 <tr>
                     <td>Status</td>

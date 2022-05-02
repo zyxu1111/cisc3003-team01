@@ -59,7 +59,7 @@
         if(mysqli_num_rows($res))
         {
             $_SESSION['login'] = "<div class='msg success'>Login successful!.</div>";
-            $_SESSION['user'] = $username;
+            // $_SESSION['user'] = $username;
 
             $row = mysqli_fetch_assoc($res);
             $_SESSION['user_id'] = $row['id'];

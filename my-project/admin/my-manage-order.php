@@ -39,7 +39,7 @@
 
         <table class="tbl-full">
             <tr>
-                <th>Order ID</th>
+                <th>Order No.</th>
                 <th>Username</th>
                 <th>Item</th>
                 <th>Price</th>
@@ -47,11 +47,7 @@
                 <th>Total</th>
                 <th>Order Date</th>
                 <th>Status</th>
-                <th>Consignee Name</th>
-                <th>Contact</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Actions</th>
+                <th>Manage</th>
             </tr>
 
             <?php 
@@ -93,7 +89,7 @@
                         ?>
 
                             <tr>
-                                <td><a href="<?php echo SITEURL; ?>admin/my-order-detail.php?order_id=<?php echo $order_id; ?>"><?php echo $order_id; ?></a></td>
+                                <td><?php echo $order_id; ?></td>
                                 <td><?php echo $username; ?></td>
                                 <td><?php echo $item_title; ?></td>
                                 <td><?php echo $price; ?></td>
@@ -124,13 +120,8 @@
                                     ?>
                                 </td>
 
-                                <td><?php echo $customer_name; ?></td>
-                                <td><?php echo $customer_contact; ?></td>
-                                <td><?php echo $customer_email; ?></td>
-                                <td><?php echo $customer_address; ?></td>
                                 <td>
-                                    <a href="<?php echo SITEURL; ?>admin/my-update-order.php?order_id=<?php echo $order_id; ?>" class="btn-secondary">Update Order</a>
-                                    <a href="<?php echo SITEURL; ?>admin/my-delete-order.php?order_id=<?php echo $order_id; ?>" class="btn-secondary">Delete Order</a>
+                                    <a href="<?php echo SITEURL; ?>admin/my-order-detail.php?order_id=<?php echo $order_id; ?>" class="btn-secondary">View Detail</a>
                                 </td>
                             </tr>
 
