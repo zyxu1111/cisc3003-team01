@@ -14,10 +14,32 @@
             }
         ?>
         <br><br>
+        <!-- success and error message -->
+        <?php 
+
+            if(isset($_SESSION['delete']))
+            {
+                echo $_SESSION['delete'];
+                unset($_SESSION['delete']);
+            }
+
+            if(isset($_SESSION['no-order-found']))
+            {
+                echo $_SESSION['no-order-found'];
+                unset($_SESSION['no-order-found']);
+            }
+
+            if(isset($_SESSION['update']))
+            {
+                echo $_SESSION['update'];
+                unset($_SESSION['update']);
+            }
+        
+        ?>
 
         <table class="tbl-full">
             <tr>
-                <th>S.N.</th>
+                <th>Order ID</th>
                 <th>Username</th>
                 <th>Item</th>
                 <th>Price</th>
@@ -34,13 +56,18 @@
 
             <?php 
                 //Get all the orders from database
-                $sql = "SELECT * FROM tbl_order ORDER BY id DESC"; // DIsplay the Latest Order at First
+                // $sql = "SELECT * FROM tbl_order ORDER BY id DESC"; // DIsplay the Latest Order at First
+                $sql = "SELECT `tbl_order`.id order_id, `tbl_users`.username,`tbl_goods`.title ,`tbl_goods`.price, `tbl_order`.qty, order_date, 
+                status, customer_name, customer_contact, customer_email, customer_address
+                FROM (`tbl_users` INNER JOIN `tbl_order` ON `tbl_users`.id=`tbl_order`.user_id) INNER JOIN 
+                `tbl_goods` ON `tbl_order`.goods_id=`tbl_goods`.id
+                ORDER BY order_id DESC";
                 //Execute Query
                 $res = mysqli_query($conn, $sql);
                 //Count the Rows
                 $count = mysqli_num_rows($res);
 
-                $sn = 1; //Create a Serial Number and set its initail value as 1
+                // $sn = 1; //Create a Serial Number and set its initail value as 1
 
                 if($count>0)
                 {
@@ -48,11 +75,14 @@
                     while($row=mysqli_fetch_assoc($res))
                     {
                         //Get all the order details
-                        $id = $row['id'];
-                        $food = $row['food'];
-                        $price = $row['price'];
+                        $order_id = $row['order_id'];
+                        // $user_id = $row['user_id'];
+                        // $goods_id = $row['goods_id'];
+                        $username = $row['username'];
+                        $item_title = $row['title'];
+                        $price= $row['price'];
                         $qty = $row['qty'];
-                        $total = $row['total'];
+                        $total = $price * $qty;
                         $order_date = $row['order_date'];
                         $status = $row['status'];
                         $customer_name = $row['customer_name'];
@@ -63,11 +93,12 @@
                         ?>
 
                             <tr>
-                                <td><?php echo $sn++; ?>. </td>
-                                <td><?php echo $food; ?></td>
+                                <td><a href="<?php echo SITEURL; ?>admin/my-order-detail.php?order_id=<?php echo $order_id; ?>"><?php echo $order_id; ?></a></td>
+                                <td><?php echo $username; ?></td>
+                                <td><?php echo $item_title; ?></td>
                                 <td><?php echo $price; ?></td>
                                 <td><?php echo $qty; ?></td>
-                                <td><?php echo $total; ?></td>
+                                <td><?php echo number_format($total,2); ?></td>
                                 <td><?php echo $order_date; ?></td>
 
                                 <td>
@@ -98,7 +129,8 @@
                                 <td><?php echo $customer_email; ?></td>
                                 <td><?php echo $customer_address; ?></td>
                                 <td>
-                                    <a href="<?php echo SITEURL; ?>admin/update-order.php?id=<?php echo $id; ?>" class="btn-secondary">Update Order</a>
+                                    <a href="<?php echo SITEURL; ?>admin/my-update-order.php?order_id=<?php echo $order_id; ?>" class="btn-secondary">Update Order</a>
+                                    <a href="<?php echo SITEURL; ?>admin/my-delete-order.php?order_id=<?php echo $order_id; ?>" class="btn-secondary">Delete Order</a>
                                 </td>
                             </tr>
 
@@ -109,7 +141,8 @@
                 else
                 {
                     //Order not Available
-                    echo "<tr><td colspan='12' class='error'>Orders not Available</td></tr>";
+                    echo "<tr><td colspan='12' class='error'>No orders found.</td></tr>";
+                    $_SESSION['no-order-found'] = "<div class='error'>Orders not available.</div>";
                 }
             ?>
 
