@@ -31,12 +31,32 @@
                         <a href="<?php echo SITEURL; ?>categories.php">Categories</a>
                     </li>
                     <li>
-                        <a href="<?php echo SITEURL; ?>foods.php">Foods</a>
+                        <a href="<?php echo SITEURL; ?>items.php">Items</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="<?php echo SITEURL; ?>my-shopping-cart.php">Shopping Cart</a>
                     </li>
-                    <li><a href="my-logout.php">Logout</a></li>
+                    <li>
+                        <!-- <a href=" -->
+                        <?php
+                            if( isset($_SESSION['user_id'] )){
+                                $user_id = $_SESSION['user_id'];
+                                $sql = "SELECT username, nickname
+                                FROM `tbl_users` WHERE id=$user_id";
+                                //Execute Query
+                                $res = mysqli_query($conn, $sql);
+                                //Count Rows
+                                $row=mysqli_fetch_assoc($res);
+                                $username = $row['username'];
+                                $nickname = $row['nickname'];
+                                echo "<a href='".SITEURL."my-logout.php'>Hello, $nickname! (Log Out)</a>";
+                            }
+                            else{
+                                echo "<a href='".SITEURL."my-login.php'>Log In</a>";
+                            } 
+                        ?>
+                        <!-- "></a> -->
+                    </li>
                 </ul>
             </div>
 

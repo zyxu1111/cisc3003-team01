@@ -1,7 +1,6 @@
 
 <?php 
 include('partials/menu.php'); 
-echo $_SESSION['admin_id'];
 ?>
 
 <!-- Main Content Section Starts -->
@@ -38,7 +37,7 @@ echo $_SESSION['admin_id'];
 
             <?php 
                 //Sql Query 
-                $sql2 = "SELECT * FROM tbl_food";
+                $sql2 = "SELECT * FROM tbl_goods";
                 //Execute Query
                 $res2 = mysqli_query($conn, $sql2);
                 //Count Rows
@@ -47,14 +46,14 @@ echo $_SESSION['admin_id'];
 
             <h1><?php echo $count2; ?></h1>
             <br />
-            Foods
+            Items
         </div>
 
         <div class="col-4 text-center">
             
             <?php 
                 //Sql Query 
-                $sql3 = "SELECT * FROM tbl_order";
+                $sql3 = "SELECT * FROM tbl_users";
                 //Execute Query
                 $res3 = mysqli_query($conn, $sql3);
                 //Count Rows
@@ -63,30 +62,23 @@ echo $_SESSION['admin_id'];
 
             <h1><?php echo $count3; ?></h1>
             <br />
-            Total Orders
+            Total Users
         </div>
 
         <div class="col-4 text-center">
             
             <?php 
-                //Creat SQL Query to Get Total Revenue Generated
-                //Aggregate Function in SQL
-                $sql4 = "SELECT SUM(total) AS Total FROM tbl_order WHERE status='Delivered'";
-
-                //Execute the Query
+                //Sql Query 
+                $sql4 = "SELECT * FROM tbl_order";
+                //Execute Query
                 $res4 = mysqli_query($conn, $sql4);
-
-                //Get the VAlue
-                $row4 = mysqli_fetch_assoc($res4);
-                
-                //GEt the Total REvenue
-                $total_revenue = $row4['Total'];
-
+                //Count Rows
+                $count4 = mysqli_num_rows($res4);
             ?>
 
-            <h1>$<?php echo $total_revenue; ?></h1>
+            <h1><?php echo $count4; ?></h1>
             <br />
-            Revenue Generated
+            Total Orders
         </div>
 
         <div class="clearfix"></div>

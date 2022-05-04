@@ -24,12 +24,12 @@
                     unset($_SESSION['login']);
                 }
                 ?>
-                <input type="submit" name="submit" value="login" class="btn">
+                <input type="submit" name="submit" value="Login" class="btn">
             </form>
             
             <div class="sign-up">
-                Don't have account?
-                <a href="#">Sign up</a>
+                Do not have an account?
+                <a href="<?php echo SITEURL;?>my-signup.php">Sign up</a>
             </div>
             
             <div class="login-footer">Created By - CISC3003 Team 01</div>

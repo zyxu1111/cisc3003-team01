@@ -27,10 +27,10 @@
                 <input type="submit" name="submit" value="login" class="btn">
             </form>
             
-            <div class="sign-up">
+            <!-- <div class="sign-up">
                 Don't have account?
                 <a href="#">Sign up</a>
-            </div>
+            </div> -->
             
             <div class="login-footer">Created By - CISC3003 Team 01</div>
         </div>
