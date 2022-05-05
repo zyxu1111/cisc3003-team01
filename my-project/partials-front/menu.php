@@ -28,10 +28,7 @@
                         <a href="<?php echo SITEURL; ?>">Home</a>
                     </li>
                     <li>
-                        <a href="<?php echo SITEURL; ?>categories.php">Categories</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo SITEURL; ?>find.php">Items</a>
+                        <a href="<?php echo SITEURL; ?>find.php">Find</a>
                     </li>
                     <li>
                         <a href="<?php echo SITEURL; ?>my-shopping-cart.php">Shopping Cart</a>

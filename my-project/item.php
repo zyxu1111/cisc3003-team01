@@ -15,8 +15,15 @@ if(isset($_GET['specific'])){
     <table class="tbl-30">
     <tr>
     <th><img src="<?php echo SITEURL; ?>images/vegetable/<?php echo $image_name; ?>" width="150px" height="150px"></th>
-    <th>description:<?php echo $description?></th>
+    <th>Title: <?php echo $title; ?></th>
+    
   </tr>
+
+  <tr>
+    <td> </td>
+    <td>description: <?php echo $description; ?></td>
+  </tr>
+
   <tr>
     <td> </td>
     <td>Price:<?php echo $price?></td>

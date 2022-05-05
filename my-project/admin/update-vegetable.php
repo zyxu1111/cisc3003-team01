@@ -168,8 +168,8 @@
                         if($upload==false)
                         {
                             $_SESSION['upload'] = "<div class='error'>Failed to Upload new Image.</div>";
-                            header('location:'.SITEURL.'admin/manage-vegetable.php');
-                            die();
+                            // header('location:'.SITEURL.'admin/manage-vegetable.php');
+                            // die();
                         }
                         if($current_image!="")
                         {
@@ -218,7 +218,7 @@
                 {
 
                     $_SESSION['update'] = "<div class='success'>Vegetable Updated Successfully.</div>";
-                   header('location:'.SITEURL.'admin/manage-vegetable.php');
+                    header('location:'.SITEURL.'admin/manage-vegetable.php');
                 }
                 else
                 {

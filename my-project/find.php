@@ -4,7 +4,7 @@
 <table class="tbl-30">
  <tr>
 <td>
-<input type="submit" name="submit" value="Refresh" class="btn-secondary">
+<input type="submit" name="submit" value="Enter" class="btn-secondary">
 </td>
 </tr>
 <?php 
@@ -35,31 +35,32 @@ while($row=mysqli_fetch_assoc($res))
 <?php 
 if(isset($_POST['submit']))
 {
- $sql2 = "SELECT id FROM tbl_category";
+    
+    if(isset($_POST['image'])){$sql2 = "SELECT id FROM tbl_category";
     $res2 = mysqli_query($conn, $sql2);
     $number=-1;
     while($row2=mysqli_fetch_assoc($res2))
     {
         if($row2['id']==$_POST['image'])
-          {
-           $number=$row2['id'];
+        {
+            $number=$row2['id'];
             break;
         }
-        }
+    }
     if(isset($number))
     {
-     $sql3 = "SELECT * FROM tbl_goods WHERE category_id=$number AND active='Yes'";
-     if(isset($sql3))
+        $sql3 = "SELECT * FROM tbl_goods WHERE category_id=$number AND active='Yes'";
+        if(isset($sql3))
         {
             $res3 = mysqli_query($conn, $sql3);
-        
-        while($row3=mysqli_fetch_assoc($res3))
-        {
-            $goodsid=$row3['id'];
-            $title=$row3['title'];
-            $image_name = $row3['image_name'];
-            $price=$row3['price'];
-            ?>
+            
+            while($row3=mysqli_fetch_assoc($res3))
+            {
+                $goodsid=$row3['id'];
+                $title=$row3['title'];
+                $image_name = $row3['image_name'];
+                $price=$row3['price'];
+                ?>
             <table>
             <tr>
             <td>
@@ -79,6 +80,12 @@ if(isset($_POST['submit']))
         }
         }
     }
+    
+    }
+    else{
+        echo"<h1>Not Selected</h1>";
+    }
+    
 }
                
 ?>             

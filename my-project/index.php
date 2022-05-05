@@ -24,11 +24,11 @@
 <!-- CAtegories Section Starts Here -->
 <section class="categories">
     <div class="container">
-        <h2 class="text-center">Explore Foods</h2>
+        <h2 class="text-center">Categories</h2>
 
         <?php 
             //Create SQL Query to Display CAtegories from Database
-            $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 3";
+            $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 6";
             //Execute the Query
             $res = mysqli_query($conn, $sql);
             //Count rows to check whether the category is available or not
@@ -89,13 +89,14 @@
 <!-- fOOD MEnu Section Starts Here -->
 <section class="food-menu">
     <div class="container">
-        <h2 class="text-center">Food Menu</h2>
+        <h2 class="text-center">Toplist</h2>
 
         <?php 
         
         //Getting Foods from Database that are active and featured
         //SQL Query
-        $sql2 = "SELECT * FROM tbl_goods WHERE active='Yes' AND featured='Yes' LIMIT 6";
+        $sql2 = "SELECT * FROM tbl_goods LEFT OUTER JOIN (SELECT goods_id, SUM(qty) sumqty FROM tbl_order GROUP BY goods_id) AS s1
+        ON tbl_goods.id = s1.goods_id WHERE featured='Yes' AND active='Yes' ORDER BY sumqty desc LIMIT 6;";
 
         //Execute the Query
         $res2 = mysqli_query($conn, $sql2);
@@ -130,7 +131,7 @@
                             {
                                 //Image Available
                                 ?>
-                                <img src="<?php echo SITEURL; ?>images/goods/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                                <img src="<?php echo SITEURL; ?>images/vegetable/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
                                 <?php
                             }
                         ?>
@@ -171,7 +172,7 @@
     </div>
 
     <p class="text-center">
-        <a href="#">See All Foods</a>
+        <a href="<?php echo SITEURL; ?>find.php">See More Items</a>
     </p>
 </section>
 <!-- fOOD Menu Section Ends Here -->
