@@ -53,7 +53,8 @@
                 <tr>
                     <td>Active: </td>
                     <td>
-                    <input type="checkbox" name="active" check="check">
+                        <input type="radio" name="active" value="Yes"> Yes 
+                        <input type="radio" name="active" value="No"> No 
                     </td>
                 </tr>
 
@@ -64,137 +65,21 @@
                 </tr>
 
             </table>
-            <?php
-                if(isset($_SESSION['add-msg'])){
-                    echo $_SESSION['add-msg'];
-                    unset($_SESSION['add-msg']);
-                }
-            ?>
+
         </form>
         <!-- Add CAtegory Form Ends -->
 
         <?php 
-
-        if(isset($_POST['submit']) ){
-
-            $title = $_POST['title'];
-            $image_name = $_FILES['image']['name'];
-
-            if($title==""){
-                $_SESSION['add-msg'] = "<div class='msg error'>The title cannot be empty.</div>";
-                header('location:'.SITEURL.'admin/my-add-category.php');
-            }
-            else{
-                // whether the button is selected or not
-                if(isset($_POST['featured']))
-                {
-                    //Get the VAlue from form
-                    $featured = $_POST['featured'];
-                }
-                else
-                {
-                    //SEt the Default VAlue
-                    $featured = "No";
-                }
-
-                // check the checkbox
-                if(isset($_POST['active'])){
-                    $active = "Yes";
-                }
-                else{
-                    $active = "No";
-                }
-                
-                // If an image is not uploaded
-                if($image_name==""){
-                    $image_name = "category_default.jpg";
-                }
-                else{
-                    //Auto Rename our Image
-                    //Get the Extension of our image (jpg, png, gif, etc) e.g. "specialfood1.jpg"
-                    $strings = explode('.', $image_name);
-                    $ext = end($strings);
-
-                    //Rename the Image
-                    $image_name = "Food_Category_".$title.".".$ext; // e.g. Food_Category_hamburger.jpg
-
-                    $source_path = $_FILES['image']['tmp_name'];
-                    $destination_path = "../images/category/".$image_name;
-
-                    //Finally Upload the Image
-                    $upload = move_uploaded_file($source_path, $destination_path);
-
-                    //Check whether the image is uploaded or not
-                    //And if the image is not uploaded then we will stop the process and redirect with error message
-                    if($upload==false)
-                    {
-                        //SEt message
-                        $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div>";
-                        //Redirect to Add CAtegory Page
-                        header('location:'.SITEURL.'admin/my-add-category.php');
-                        //STop the Process
-                        die();
-                    }
-
-                }
-
-                //2. Create SQL Query to Insert CAtegory into Database
-                $sql = "INSERT INTO tbl_category SET 
-                title='$title',
-                image_name='$image_name',
-                featured='$featured',
-                active='$active'
-                ";
-
-                //3. Execute the Query and Save in Database
-                $res = mysqli_query($conn, $sql);
-
-                //4. Check whether the query executed or not and data added or not
-                if($res)
-                {
-                    //Query Executed and Category Added
-                    $_SESSION['add'] = "<div class='msg success'>Category Added Successfully.</div>";
-                    //Redirect to Manage Category Page
-                    unset($_SESSION['add-msg']);
-                    header('location:'.SITEURL.'admin/manage-category.php');
-                }
-                else
-                {
-                    //Failed to Add CAtegory
-                    $_SESSION['add-msg'] = "<div class='msg error'>Failed to Add Category.</div>";
-                    //Redirect to Manage Category Page
-                    header('location:'.SITEURL.'admin/my-add-category.php');
-                }
-
-                // header('location:'.SITEURL.'admin/manage-category.php');
-                echo $title.'-'.$image_name.'-'.$featured.'-'.$active;
-
-                
-                
-
-            }
-
-            // echo "clicked"."<br>";
-            // echo "title2".$title;
-        }
-        /*
-            //CHeck whether the Submit Button is Clicked or Not
+        
             if(isset($_POST['submit']))
             {
-                //echo "Clicked";
-
-                //1. Get the Value from CAtegory Form
                 $title = $_POST['title'];
-
-                //For Radio input, we need to check whether the button is selected or not
                 if(isset($_POST['featured']))
                 {
-                    //Get the VAlue from form
                     $featured = $_POST['featured'];
                 }
                 else
                 {
-                    //SEt the Default VAlue
                     $featured = "No";
                 }
 
@@ -207,45 +92,19 @@
                     $active = "No";
                 }
 
-                //Check whether the image is selected or not and set the value for image name accoridingly
-                //print_r($_FILES['image']);
-
-                //die();//Break the Code Here
 
                 if(isset($_FILES['image']['name']))
                 {
-                    //Upload the Image
-                    //To upload image we need image name, source path and destination path
                     $image_name = $_FILES['image']['name'];
-                    
-                    // Upload the Image only if image is selected
-                    if($image_name != "")
+                  if($image_name != "")
                     {
-
-                        //Auto Rename our Image
-                        //Get the Extension of our image (jpg, png, gif, etc) e.g. "specialfood1.jpg"
                         $ext = end(explode('.', $image_name));
-
-                        //Rename the Image
-                        $image_name = "Food_Category_".rand(000, 999).'.'.$ext; // e.g. Food_Category_834.jpg
-                        
-
-                        $source_path = $_FILES['image']['tmp_name'];
-
-                        $destination_path = "../images/category/".$image_name;
-
-                        //Finally Upload the Image
-                        $upload = move_uploaded_file($source_path, $destination_path);
-
-                        //Check whether the image is uploaded or not
-                        //And if the image is not uploaded then we will stop the process and redirect with error message
+                        $image_name = "Vegetable_Category_".$title.'.'.$ext;                                              
+                        $upload = move_uploaded_file($_FILES['image']['tmp_name'], "../images/category/".$image_name);
                         if($upload==false)
                         {
-                            //SEt message
                             $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div>";
-                            //Redirect to Add CAtegory Page
                             header('location:'.SITEURL.'admin/add-category.php');
-                            //STop the Process
                             die();
                         }
 
@@ -253,42 +112,34 @@
                 }
                 else
                 {
-                    //Don't Upload Image and set the image_name value as blank
                     $image_name="";
-                }
-
-                //2. Create SQL Query to Insert CAtegory into Database
-                $sql = "INSERT INTO tbl_category SET 
-                    title='$title',
-                    image_name='$image_name',
-                    featured='$featured',
-                    active='$active'
-                ";
-
-                //3. Execute the Query and Save in Database
+                } 
+                // $sql2="SELECT max(id) FROM tbl_category";
+                // if(isset($sql2)){
+                //     $excut2 = mysqli_query($conn, $sql2);
+                //     $excut2 = $excut2->fetch_array();
+                //     $quantity = intval($excut2[0]);}
+                $sql = "INSERT INTO tbl_category SET
+                title = '$title',
+                image_name = '$image_name',
+                featured = '$featured',
+                active = '$active'";
                 $res = mysqli_query($conn, $sql);
-
-                //4. Check whether the query executed or not and data added or not
                 if($res==true)
                 {
-                    //Query Executed and Category Added
                     $_SESSION['add'] = "<div class='success'>Category Added Successfully.</div>";
-                    //Redirect to Manage Category Page
                     header('location:'.SITEURL.'admin/manage-category.php');
                 }
                 else
                 {
-                    //Failed to Add CAtegory
                     $_SESSION['add'] = "<div class='error'>Failed to Add Category.</div>";
-                    //Redirect to Manage Category Page
                     header('location:'.SITEURL.'admin/add-category.php');
                 }
             }
-        */
+        
         ?>
 
     </div>
 </div>
 
 <?php include('partials/footer.php'); ?>
-

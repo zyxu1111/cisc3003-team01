@@ -53,7 +53,7 @@
         <br><br>
 
                 <!-- Button to Add Admin -->
-                <a href="<?php echo SITEURL; ?>admin/my-add-category.php" class="btn-primary">Add Category</a>
+                <a href="<?php echo SITEURL; ?>admin/add-category.php" class="btn-primary">Add Category</a>
 
                 <br /><br /><br />
 
@@ -68,24 +68,18 @@
                     </tr>
 
                     <?php 
-
-                        //Query to Get all CAtegories from Database
+                    //read category table
                         $sql = "SELECT * FROM tbl_category";
-
-                        //Execute Query
                         $res = mysqli_query($conn, $sql);
 
-                        //Count Rows
+                    //count rows
                         $count = mysqli_num_rows($res);
-
-                        //Create Serial Number Variable and assign value as 1
+ 
                         $sn=1;
 
-                        //Check whether we have data in database or not
+                        //display
                         if($count>0)
                         {
-                            //We have data in database
-                            //get the data and display
                             while($row=mysqli_fetch_assoc($res))
                             {
                                 $id = $row['id'];
@@ -93,7 +87,6 @@
                                 $image_name = $row['image_name'];
                                 $featured = $row['featured'];
                                 $active = $row['active'];
-
                                 ?>
 
                                     <tr>
@@ -103,10 +96,10 @@
                                         <td>
 
                                             <?php  
-                                                //Chcek whether image name is available or not
+                                                //Chcek the image name 
                                                 if($image_name!="")
                                                 {
-                                                    //Display the Image
+                                                    //Display Image
                                                     ?>
                                                     
                                                     <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" width="100px" >
@@ -115,7 +108,7 @@
                                                 }
                                                 else
                                                 {
-                                                    //DIsplay the MEssage
+                                                    //display error message
                                                     echo "<div class='error'>Image not Added.</div>";
                                                 }
                                             ?>
@@ -125,8 +118,8 @@
                                         <td><?php echo $featured; ?></td>
                                         <td><?php echo $active; ?></td>
                                         <td>
-                                            <a href="<?php echo SITEURL; ?>admin/my-update-category.php?id=<?php echo $id; ?>" class="btn-secondary">Update Category</a>
-                                            <a href="<?php echo SITEURL; ?>admin/my-delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-danger">Delete Category</a>
+                                            <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $id; ?>" class="btn-secondary">Update Category</a>
+                                            <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-danger">Delete Category</a>
                                         </td>
                                     </tr>
 
@@ -136,8 +129,6 @@
                         }
                         else
                         {
-                            //WE do not have data
-                            //We'll display the message inside table
                             ?>
 
                             <tr>
