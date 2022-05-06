@@ -146,7 +146,7 @@
                         </p>
                         <br>
 
-                        <a href="<?php echo SITEURL; ?>my-order.php?goods_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
+                        <a href="<?php echo SITEURL; ?>order.php?goods_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
                     </div>
                 </div>
 

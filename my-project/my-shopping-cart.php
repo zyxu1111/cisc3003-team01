@@ -142,7 +142,7 @@
                                 <a href="<?php echo SITEURL; ?>my-delete-cart.php?cart_id=<?php echo $cart_id; ?>" class="btn-danger">Delete Item</a>
                             </td>
                             <td>    
-                                <a href="<?php echo SITEURL; ?>my-order.php?goods_id=<?php echo $goods_id; ?>&qty=<?php echo $qty; ?>" class="btn">  Order</a>
+                                <a href="<?php echo SITEURL; ?>order.php?goods_id=<?php echo $goods_id; ?>&qty=<?php echo $qty; ?>" class="btn">  Order</a>
                             </td>
                         </tr>
 

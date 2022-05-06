@@ -56,7 +56,7 @@
                     <div class="item">
                     <div class="buttons">
                     <span class="delete-btn" onclick="location.href='<?php echo SITEURL; ?>my-delete-cart.php?cart_id=<?php echo $cart_id; ?>'"></span>
-                    <span class="cart-btn" onclick="location.href='<?php echo SITEURL; ?>my-order.php?goods_id=<?php echo $goods_id; ?>&qty=<?php echo $qty; ?>'"></span>
+                    <span class="cart-btn" onclick="location.href='<?php echo SITEURL; ?>order.php?goods_id=<?php echo $goods_id; ?>&qty=<?php echo $qty; ?>'"></span>
                     </div>
 
                     <div class="image">

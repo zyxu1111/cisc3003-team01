@@ -52,7 +52,7 @@ if(isset($_POST['buy']))
 {
     // var_dump("bought");
     $qy=$_POST['qy'];
-    header('location:'.SITEURL.'my-order.php?goods_id='.$id.'&qty='.$qy);
+    header('location:'.SITEURL.'order.php?goods_id='.$id.'&qty='.$qy);
  //   header('location:'.SITEURL.'admin/manage-vegetable.php');
 }
 if(isset($_POST['cart']))
