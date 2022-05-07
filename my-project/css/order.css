@@ -86,7 +86,7 @@
 	height:35px;
 }
 .form-style-5 .number {
-	background: #1abc9c;
+	background: #35bbca;
 	color: #fff;
 	height: 30px;
 	width: 30px;
@@ -107,15 +107,16 @@
 	/* padding: 18px 39px 18px 39px; */
 	color: #FFF;
 	margin: 0 auto;
-	background: #1abc9c;
+	background: linear-gradient(to right, #35bbca, #d3dd18);
 	font-size: 15px;
 	text-align: center;
 	font-style: normal;
 	width: 80%;
     height: 40px;
-	border: 1px solid #16a085;
+	/* border: 1px solid #16a085; */
+	border: 0;
 	border-width: 1px 1px 3px;
-    border-radius: 10px;
+    border-radius: 6px;
 	/* margin-bottom: 10px; */
 }
 .form-style-5 input[type="submit"]:hover,

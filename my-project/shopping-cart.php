@@ -1,7 +1,7 @@
 <?php include('partials-front/menu.php'); ?>
 <?php include('partials-front/my-login-check.php'); ?>
 
-<link rel="stylesheet" href="css/sc.css">
+<link rel="stylesheet" href="css/cart.css">
 <div class="shopping-cart">
     <!-- Title -->
     <div class="title">

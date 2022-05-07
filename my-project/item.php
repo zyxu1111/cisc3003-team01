@@ -1,4 +1,5 @@
 <?php include('partials-front/menu.php'); ?>
+<?php include('partials-front/my-login-check.php'); ?>
 <?php 
 if(isset($_GET['specific'])){
     $id=$_GET['specific'];
