@@ -31,7 +31,7 @@
                         <a href="<?php echo SITEURL; ?>find.php">Find</a>
                     </li>
                     <li>
-                        <a href="<?php echo SITEURL; ?>my-shopping-cart.php">Shopping Cart</a>
+                        <a href="<?php echo SITEURL; ?>shopping-cart.php">Shopping Cart</a>
                     </li>
                     <li>
                         <!-- <a href=" -->

@@ -24,12 +24,12 @@ if( isset($_GET['cart_id'], $_GET['op'], $_SESSION['user_id']) ){
         $_SESSION['delete'] = "<div class='error'>Failed to Update Item.</div>";
     }
 
-    header('location:'.SITEURL.'my-shopping-cart.php');
+    header('location:'.SITEURL.'shopping-cart.php');
 }
 else{
     //SEt Fail MEssage and Redirecs
     $_SESSION['update'] = "<div class='error'>Failed to Update Item.</div>";
     //Redirect to Manage Category
-    header('location:'.SITEURL.'my-shopping-cart.php');
+    header('location:'.SITEURL.'shopping-cart.php');
 }
 ?>

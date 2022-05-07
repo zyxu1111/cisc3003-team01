@@ -16,12 +16,12 @@ if( isset($_GET['cart_id'], $_SESSION['user_id']) ){
         $_SESSION['delete'] = "<div class='error'>Failed to Delete Item.</div>";
     }
     //Redirect to Manage Category
-    header('location:'.SITEURL.'my-shopping-cart.php');
+    header('location:'.SITEURL.'shopping-cart.php');
 }
 else{
     //SEt Fail MEssage and Redirecs
     $_SESSION['delete'] = "<div class='error'>Failed to Delete Item.</div>";
     //Redirect to Manage Category
-    header('location:'.SITEURL.'my-shopping-cart.php');
+    header('location:'.SITEURL.'shopping-cart.php');
 }
 ?>
