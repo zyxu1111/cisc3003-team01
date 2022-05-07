@@ -13,7 +13,6 @@
         ?>
 
     <div>
-    <h1>Add Vegetable</h1>
 <form action=" " method="POST" enctype="multipart/form-data">
 <table>
 <br>

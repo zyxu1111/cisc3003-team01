@@ -13,36 +13,24 @@ if(isset($_GET['specific'])){
     ?>
     <div>
     <form action="" method="POST" enctype="multipart/form-data">
-    <table class="tbl-30">
-    <tr>
-    <th><img src="<?php echo SITEURL; ?>images/vegetable/<?php echo $image_name; ?>" width="150px" height="150px"></th>
-    <th>Title: <?php echo $title; ?></th>
-    
-  </tr>
+	<div style="float:left;width:30%;height:100%;margin: 5px 0px 20px 10%;">
+	<img src="<?php echo SITEURL; ?>images/vegetable/<?php echo $image_name; ?>" width="550px" height="550px">
+	</div>
 
-  <tr>
-    <td> </td>
-    <td>description: <?php echo $description; ?></td>
-  </tr>
-
-  <tr>
-    <td> </td>
-    <td>Price:<?php echo $price?></td>
-  </tr>
-  
-  <tr>
-    <td> </td>
-    <td><label>quanitiy:<input type="number"  name="qy"></label></td>
-  </tr>
-  
-    <tr>
-    <td> </td>
-    <td ><input type="submit" name="buy" value="buy it now" class="btn-secondary"></td>
-     <td ><input type="submit" name="cart" value="shopping cart" class="btn-secondary"></td>
-  </tr>
-  
-     
-</table>        
+ <div style="float:right;width:30%;height:100%;margin: 5px 15% 20px 0%;">
+ <h1 style="font-size:300%;">Title: <?php echo $title; ?></h1>
+ <br> <br>
+ <P style="font-size:160%;">Description: <?php echo $description; ?></P>
+ <br> <br>
+ <P style="font-size:160%;">Price:<?php echo $price?></P>
+ <br> <br>
+ <label style="font-size:160%;">Quanitiy:<input type="number"  name="qy"></label>
+ <br> <br><br><br>
+ <input type="submit" name="buy" value="buy it now" class="btn-secondary" style="height:50px; width:120px">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="submit" name="cart" value="shopping cart" class="btn-secondary" style="height:50px; width:120px">
+ </div>
+          
 </form>
 </div>
 <?php 
@@ -76,4 +64,7 @@ if(isset($_POST['cart']))
 
 
 ?>
-<?php include('partials-front/footer.php'); ?>
+ <div style="clear:both;display:flex;bottom:0px;">       
+       
+           </div>      
+<?php include('partials-front/footer.php'); ?>  

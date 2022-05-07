@@ -65,7 +65,14 @@
 
                     <div class="description">
                     <span><?php echo $title; ?></span>
-                    <span><?php echo $description; ?></span>
+                    <span><?php 
+                    if(strlen($description)>90){
+                        echo substr($description, 0, 90)."...";
+                    }
+                    else{
+                        echo $description;
+                    }
+                     ?></span>
                     <!-- <span>White</span> -->
                     </div>
 
