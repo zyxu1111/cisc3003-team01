@@ -1,7 +1,7 @@
 <?php include('partials-front/menu.php'); ?>
 <?php include('partials-front/my-login-check.php'); ?>
 
-<link rel="stylesheet" href="css/sc.css">
+<link rel="stylesheet" href="css/cart.css">
 <div class="shopping-cart">
     <!-- Title -->
     <div class="title">
@@ -56,7 +56,7 @@
                     <div class="item">
                     <div class="buttons">
                     <span class="delete-btn" onclick="location.href='<?php echo SITEURL; ?>my-delete-cart.php?cart_id=<?php echo $cart_id; ?>'"></span>
-                    <span class="cart-btn" onclick="location.href='<?php echo SITEURL; ?>my-order.php?goods_id=<?php echo $goods_id; ?>&qty=<?php echo $qty; ?>'"></span>
+                    <span class="cart-btn" onclick="location.href='<?php echo SITEURL; ?>order.php?goods_id=<?php echo $goods_id; ?>&qty=<?php echo $qty; ?>'"></span>
                     </div>
 
                     <div class="image">
@@ -65,7 +65,14 @@
 
                     <div class="description">
                     <span><?php echo $title; ?></span>
-                    <span><?php echo $description; ?></span>
+                    <span><?php 
+                    if(strlen($description)>90){
+                        echo substr($description, 0, 90)."...";
+                    }
+                    else{
+                        echo $description;
+                    }
+                     ?></span>
                     <!-- <span>White</span> -->
                     </div>
 

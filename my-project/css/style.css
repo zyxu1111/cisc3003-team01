@@ -1,10 +1,4 @@
-/* 
-    Author: Vijay Thapa;
-    Theme: Restaurant Food Order;
-    version: 1.0;
-*/
 
-/* CSS for All */
 *{
     margin: 0 0;
     padding: 0 0;
@@ -15,6 +9,11 @@
     margin: 0 auto;
     padding: 1%;
 }
+.container2{
+    width: 80%;
+    margin: 0 auto;
+}
+
 .img-responsive{
     width: 100%;
 }
@@ -41,11 +40,11 @@
 }
 
 a{
-    color: #ff6b81;
+    color: #35bbca;
     text-decoration: none;
 }
 a:hover{
-    color: #ff4757;
+    color: #16537e;
 }
 
 .btn{
@@ -55,13 +54,13 @@ a:hover{
     border-radius: 5px;
 }
 .btn-primary{
-    background-color: #ff6b81;
+    background-color: #35bbca;
     color: white;
     cursor: pointer;
 }
 .btn-primary:hover{
     color: white;
-    background-color: #ff4757;
+    background-color: #16537e;
 }
 h2{
     color: #2f3542;
@@ -115,15 +114,11 @@ fieldset{
     font-weight: bold;
 }
 
-
-/* CSS for Food SEarch Section */
-
 .food-search{
-    background-image: url(../images/ve2.jpg);
+    background-image: url(../images/ve.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding: 7% 0;
 }
 
 .food-search input[type="search"]{
@@ -164,6 +159,11 @@ fieldset{
 .food-menu-img{
     width: 20%;
     float: left;
+}
+
+.food-menu-img img{
+    max-width: 90%;
+    max-height: 110px;
 }
 
 .food-menu-desc{
@@ -301,5 +301,3 @@ fieldset{
         width: 100%;
     }
 }
-
-

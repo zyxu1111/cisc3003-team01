@@ -5,7 +5,7 @@
     <div class="container">
         
         <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
-            <input type="search" name="search" placeholder="Search for Food.." required>
+            <input type="search" name="search" placeholder="Search for Items.." required>
             <input type="submit" name="submit" value="Search" class="btn btn-primary">
         </form>
 
@@ -45,7 +45,7 @@
                     $image_name = $row['image_name'];
                     ?>
                     
-                    <a href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
+                    <a href="<?php echo SITEURL; ?>find.php?category_id=<?php echo $id; ?>">
                         <div class="box-3 float-container">
                             <?php 
                                 //Check whether Image is available or not
@@ -131,7 +131,7 @@
                             {
                                 //Image Available
                                 ?>
-                                <img src="<?php echo SITEURL; ?>images/vegetable/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                                <img src="<?php echo SITEURL; ?>images/vegetable/<?php echo $image_name; ?>" alt="Item Picture" class="img-responsive img-curve">
                                 <?php
                             }
                         ?>
@@ -142,11 +142,18 @@
                         <h4><?php echo $title; ?></h4>
                         <p class="food-price">$<?php echo $price; ?></p>
                         <p class="food-detail">
-                            <?php echo $description; ?>
+                        <?php 
+                            if(strlen($description)>70){
+                                echo substr($description, 0, 70)."...";
+                            }
+                            else{
+                                echo $description;
+                            }
+                            ?>
                         </p>
                         <br>
 
-                        <a href="<?php echo SITEURL; ?>my-order.php?goods_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
+                        <a href="<?php echo SITEURL; ?>order.php?goods_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
                     </div>
                 </div>
 
