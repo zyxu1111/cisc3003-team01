@@ -1,3 +1,16 @@
+<!-- 
+--------------------------------------------
+CISC3003 Team Project - Team 01
+
+Topic: Fresh Food E-shopping Platform
+
+Team Member: 
+CC029691    Yufei Jiang
+DB927262    WU MAN CHON
+DC128500    Nathan, XU ZHENG YU
+DC128111    Leandro Manuel Chan Siqueira
+-------------------------------------------- 
+-->
 <?php 
 
     include('../config/constants.php'); 
@@ -5,10 +18,15 @@
 
 ?>
 
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>E-Shopping Website - Home Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Yufei Jiang,WU MAN CHON,Nathan,XU ZHENG YU">
+        <meta name="keywords" content="HTML, CSS, PHP">
+        <meta name="description" content="CC029691(Yufei Jiang),DB927262(WU MAN CHON),DC128500(Nathan,XU ZHENG YU),DC128111(Leandro Manuel Chan Siqueira)">
+        <title>E-Shopping Admin Page - CISC3003 Team01</title>
 
         <link rel="stylesheet" href="../css/admin.css">
     </head>
